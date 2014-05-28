@@ -4,7 +4,7 @@
 <head>
 <meta charset="utf-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<title>Mateusz Michalski Website</title>
+<title>Mateusz Michalski Mapa</title>
 <script type="text/javascript">
 //<![CDATA[
 try{if (!window.CloudFlare) {var CloudFlare=[{verbose:0,p:1400807252,byc:0,owlid:"cf",bag2:1,mirage2:{profile:false},oracle:0,paths:{cloudflare:"/cdn-cgi/nexp/dok9v=e9cb4febb4/"},atok:"c76498f2b2afd262a0f24234e28600c5",petok:"b6924195bca5639702733dc455754e765184ea92-1401131286-1800",zone:"zurb.com",rocket:"a",apps:{}}];document.write('<script type="text/javascript" src="//ajax.cloudflare.com/cdn-cgi/nexp/dok9v=97fb4d042e/cloudflare.min.js"><'+'\/script>');}}catch(e){};
@@ -12,25 +12,17 @@ try{if (!window.CloudFlare) {var CloudFlare=[{verbose:0,p:1400807252,byc:0,owlid
 </script>
 <link rel="stylesheet" href="css/foundation.css"/>
 <script data-rocketsrc="js/vendor/modernizr.js" type="text/rocketscript"></script>
-   
-<script src="bower_components/platform/platform.js"></script>
-<link rel="import" href="bower_components/polymer-jsonp/polymer-jsonp.html"/>
+
+<link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet-0.7.2/leaflet.css" />
+<script src="http://cdn.leafletjs.com/leaflet-0.7.2/leaflet.js"></script>
+<script src="mapa.js"></script>
+
 <style type="text/css">
-    	weather-el{
-    		display:block; 
-    		border: 1px solid #ccc; 
-    		border-radius: 7px;
-    		max-width: 320px; 
-    		margin: auto;
-    	}
+  #map { height: 540px;
+  margin-top: 10px; }
 
-    	weather-el > div.container {
-    		border-radius: 6px;
-    	}
+  h3 {text-align: center;}
 </style>
-
-
-<link rel="import" href="src/weather-el.html">
 </head>
 
 
@@ -54,38 +46,11 @@ try{if (!window.CloudFlare) {var CloudFlare=[{verbose:0,p:1400807252,byc:0,owlid
  
 <div class="row">
 <div class="large-12 columns">
-<img data-cfsrc="fot1.jpeg" src="http://www36.zippyshare.com/scaled/93060663/file.html">
-<hr>
+<h3>Tasa autobusu 110</h3>
+<div id="map"></div>
 </div>
 </div>
  
-<div class="row">
-<div class="large-4 columns">
-<img data-cfsrc="fot1.jpeg" src="http://www35.zippyshare.com/scaled/29316828/file.html">
-</div>
-<div class="large-8 columns">
-<h3>Cześć i czołem kluski z rosołem,<br><h4>a może na odwrót ?</h4></h3>
-<div class="row">
-<div class="large-6 columns">
-<p>Apetyt rośnie w miarę jedzenia ? A może bez pracy nie ma kołaczy. Biednemu zawsze wiatr w oczy i może być kulą u nogi. Czasami można być pracowitym jak pszczoła, a czasami siedzieć jak leń i nic nie robić cały dzień.</p>
-</div>
-<div class="large-6 columns">
-<p>Jak to mawiają co kraj to obyczaj. Dzieci i ryby głosu nie mają, więc nastała cisza jak makiem zasiał. Gdzie kucharek sześć, tam nie ma co jeść, ale z drugiej strony baba z wozu, koniom lżej. ^_^</p>
-</div>
-</div>
-</div>
-</div>
- 
-<div class="row">
-<div class="large-8 columns">
-<h4>Arrr! Więcej rumu majtkowie !</h4>
-<p>Ciepła krew poleje się strugami, wygra ten, kto utrzyma ship. W huku dział ktoś przykryje się falami, jak da Bóg, ocalimy bryg.</p>
-<p>Ciepła krew poleje się strugami, wygra ten, kto utrzyma ship. W huku dział ktoś przykryje się falami,j ak da Bóg, ocalimy bryg.</p>
-</div>
-<div class="large-4 columns">
-<weather-el autoupdate="true"></weather-el>
-</div>
-</div>
  
 <footer class="row">
 <div class="large-12 columns">
