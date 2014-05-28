@@ -1,0 +1,382 @@
+{
+	"current": {
+		"image": {
+			"url": "http://icons-ak.wxug.com/graphics/wu2/logo_130x80.png",
+			"title": "Weather Underground",
+			"link": "http://www.wunderground.com"
+		},
+		"display_location": {
+			"full": "Princeton, NJ",
+			"city": "Princeton",
+			"state": "NJ",
+			"state_name": "New Jersey",
+			"country": "US",
+			"country_iso3166": "US",
+			"zip": "08528",
+			"magic": "1",
+			"wmo": "99999",
+			"latitude": "40.386913",
+			"longitude": "-74.583090",
+			"elevation": "41.00000000"
+		},
+		"observation_location": {
+			"full": "Kendall Park, Kendall Park, New Jersey",
+			"city": "Kendall Park, Kendall Park",
+			"state": "New Jersey",
+			"country": "US",
+			"country_iso3166": "US",
+			"latitude": "40.421013",
+			"longitude": "-74.565346",
+			"elevation": "157 ft"
+		},
+		"estimated": {},
+		"station_id": "KNJKENDA3",
+		"observation_time": "Last Updated on January 4, 11:10 PM EST",
+		"observation_time_rfc822": "Sat, 04 Jan 2014 23:10:16 -0500",
+		"observation_epoch": "1388895016",
+		"local_time_rfc822": "Sat, 04 Jan 2014 23:14:50 -0500",
+		"local_epoch": "1388895290",
+		"local_tz_short": "EST",
+		"local_tz_long": "America/New_York",
+		"local_tz_offset": "-0500",
+		"weather": "Clear",
+		"temperature_string": "10.6 F (-11.9 C)",
+		"temp_f": 10.6,
+		"temp_c": -11.9,
+		"relative_humidity": "71%",
+		"wind_string": "Calm",
+		"wind_dir": "East",
+		"wind_degrees": 90,
+		"wind_mph": 0,
+		"wind_gust_mph": 0,
+		"wind_kph": 0,
+		"wind_gust_kph": 0,
+		"pressure_mb": "1026",
+		"pressure_in": "30.31",
+		"pressure_trend": "0",
+		"dewpoint_string": "3 F (-16 C)",
+		"dewpoint_f": 3,
+		"dewpoint_c": -16,
+		"heat_index_string": "NA",
+		"heat_index_f": "NA",
+		"heat_index_c": "NA",
+		"windchill_string": "11 F (-12 C)",
+		"windchill_f": "11",
+		"windchill_c": "-12",
+		"feelslike_string": "11 F (-12 C)",
+		"feelslike_f": "11",
+		"feelslike_c": "-12",
+		"visibility_mi": "10.0",
+		"visibility_km": "16.1",
+		"solarradiation": "0",
+		"UV": "0",
+		"precip_1hr_string": "0.00 in ( 0 mm)",
+		"precip_1hr_in": "0.00",
+		"precip_1hr_metric": " 0",
+		"precip_today_string": "0.00 in (0 mm)",
+		"precip_today_in": "0.00",
+		"precip_today_metric": "0",
+		"icon": "clear",
+		"icon_url": "http://icons-ak.wxug.com/i/c/k/nt_clear.gif",
+		"forecast_url": "http://www.wunderground.com/US/NJ/Kingston.html",
+		"history_url": "http://www.wunderground.com/weatherstation/WXDailyHistory.asp?ID=KNJKENDA3",
+		"ob_url": "http://www.wunderground.com/cgi-bin/findweather/getForecast?query=40.421013,-74.565346",
+		"localdatetime": "Sat, Jan 04 11:14 PM"
+	},
+	"forecast": {
+		"forecastday": [{
+			"date": {
+				"epoch": "1388890800",
+				"pretty": "10:00 PM EST on January 04, 2014",
+				"day": 4,
+				"month": 1,
+				"year": 2014,
+				"yday": 3,
+				"hour": 22,
+				"min": "00",
+				"sec": 0,
+				"isdst": "0",
+				"monthname": "January",
+				"monthname_short": "Jan",
+				"weekday_short": "Sat",
+				"weekday": "Saturday",
+				"ampm": "PM",
+				"tz_short": "EST",
+				"tz_long": "America/New_York"
+			},
+			"period": 1,
+			"high": {
+				"fahrenheit": "34",
+				"celsius": "1"
+			},
+			"low": {
+				"fahrenheit": "19",
+				"celsius": "-7"
+			},
+			"conditions": "Partly Cloudy",
+			"icon": "partlycloudy",
+			"icon_url": "http://icons-ak.wxug.com/i/c/k/partlycloudy.gif",
+			"skyicon": "mostlysunny",
+			"pop": 0,
+			"qpf_allday": {
+				"in": 0,
+				"mm": 0
+			},
+			"qpf_day": {
+				"in": 0,
+				"mm": 0
+			},
+			"qpf_night": {
+				"in": 0,
+				"mm": 0
+			},
+			"snow_allday": {
+				"in": 0,
+				"cm": 0
+			},
+			"snow_day": {
+				"in": 0,
+				"cm": 0
+			},
+			"snow_night": {
+				"in": 0,
+				"cm": 0
+			},
+			"maxwind": {
+				"mph": 9,
+				"kph": 14,
+				"dir": "SSW",
+				"degrees": 210
+			},
+			"avewind": {
+				"mph": 6,
+				"kph": 10,
+				"dir": "SSW",
+				"degrees": 211
+			},
+			"avehumidity": 64,
+			"maxhumidity": 77,
+			"minhumidity": 34
+		}, {
+			"date": {
+				"epoch": "1388977200",
+				"pretty": "10:00 PM EST on January 05, 2014",
+				"day": 5,
+				"month": 1,
+				"year": 2014,
+				"yday": 4,
+				"hour": 22,
+				"min": "00",
+				"sec": 0,
+				"isdst": "0",
+				"monthname": "January",
+				"monthname_short": "Jan",
+				"weekday_short": "Sun",
+				"weekday": "Sunday",
+				"ampm": "PM",
+				"tz_short": "EST",
+				"tz_long": "America/New_York"
+			},
+			"period": 2,
+			"high": {
+				"fahrenheit": "43",
+				"celsius": "6"
+			},
+			"low": {
+				"fahrenheit": "43",
+				"celsius": "6"
+			},
+			"conditions": "Ice Pellets",
+			"icon": "chancesleet",
+			"icon_url": "http://icons-ak.wxug.com/i/c/k/chancesleet.gif",
+			"skyicon": "cloudy",
+			"pop": 70,
+			"qpf_allday": {
+				"in": 0.28,
+				"mm": 7.1
+			},
+			"qpf_day": {
+				"in": 0.03,
+				"mm": 0.8
+			},
+			"qpf_night": {
+				"in": 0.45,
+				"mm": 11.4
+			},
+			"snow_allday": {
+				"in": 0,
+				"cm": 0
+			},
+			"snow_day": {
+				"in": 0,
+				"cm": 0
+			},
+			"snow_night": {
+				"in": 0,
+				"cm": 0
+			},
+			"maxwind": {
+				"mph": 6,
+				"kph": 10,
+				"dir": "ESE",
+				"degrees": 109
+			},
+			"avewind": {
+				"mph": 4,
+				"kph": 6,
+				"dir": "ESE",
+				"degrees": 120
+			},
+			"avehumidity": 82,
+			"maxhumidity": 88,
+			"minhumidity": 71
+		}, {
+			"date": {
+				"epoch": "1389063600",
+				"pretty": "10:00 PM EST on January 06, 2014",
+				"day": 6,
+				"month": 1,
+				"year": 2014,
+				"yday": 5,
+				"hour": 22,
+				"min": "00",
+				"sec": 0,
+				"isdst": "0",
+				"monthname": "January",
+				"monthname_short": "Jan",
+				"weekday_short": "Mon",
+				"weekday": "Monday",
+				"ampm": "PM",
+				"tz_short": "EST",
+				"tz_long": "America/New_York"
+			},
+			"period": 3,
+			"high": {
+				"fahrenheit": "50",
+				"celsius": "10"
+			},
+			"low": {
+				"fahrenheit": "7",
+				"celsius": "-14"
+			},
+			"conditions": "Rain",
+			"icon": "rain",
+			"icon_url": "http://icons-ak.wxug.com/i/c/k/rain.gif",
+			"skyicon": "partlycloudy",
+			"pop": 80,
+			"qpf_allday": {
+				"in": 0.38,
+				"mm": 9.7
+			},
+			"qpf_day": {
+				"in": 0.17,
+				"mm": 4.3
+			},
+			"qpf_night": {
+				"in": 0.01,
+				"mm": 0.3
+			},
+			"snow_allday": {
+				"in": 0,
+				"cm": 0
+			},
+			"snow_day": {
+				"in": 0,
+				"cm": 0
+			},
+			"snow_night": {
+				"in": 0,
+				"cm": 0
+			},
+			"maxwind": {
+				"mph": 19,
+				"kph": 30,
+				"dir": "West",
+				"degrees": 270
+			},
+			"avewind": {
+				"mph": 17,
+				"kph": 27,
+				"dir": "West",
+				"degrees": 266
+			},
+			"avehumidity": 50,
+			"maxhumidity": 98,
+			"minhumidity": 41
+		}, {
+			"date": {
+				"epoch": "1389150000",
+				"pretty": "10:00 PM EST on January 07, 2014",
+				"day": 7,
+				"month": 1,
+				"year": 2014,
+				"yday": 6,
+				"hour": 22,
+				"min": "00",
+				"sec": 0,
+				"isdst": "0",
+				"monthname": "January",
+				"monthname_short": "Jan",
+				"weekday_short": "Tue",
+				"weekday": "Tuesday",
+				"ampm": "PM",
+				"tz_short": "EST",
+				"tz_long": "America/New_York"
+			},
+			"period": 4,
+			"high": {
+				"fahrenheit": "12",
+				"celsius": "-11"
+			},
+			"low": {
+				"fahrenheit": "5",
+				"celsius": "-15"
+			},
+			"conditions": "Partly Cloudy",
+			"icon": "partlycloudy",
+			"icon_url": "http://icons-ak.wxug.com/i/c/k/partlycloudy.gif",
+			"skyicon": "mostlysunny",
+			"pop": 10,
+			"qpf_allday": {
+				"in": 0,
+				"mm": 0
+			},
+			"qpf_day": {
+				"in": 0,
+				"mm": 0
+			},
+			"qpf_night": {
+				"in": 0,
+				"mm": 0
+			},
+			"snow_allday": {
+				"in": 0,
+				"cm": 0
+			},
+			"snow_day": {
+				"in": 0,
+				"cm": 0
+			},
+			"snow_night": {
+				"in": 0,
+				"cm": 0
+			},
+			"maxwind": {
+				"mph": 22,
+				"kph": 35,
+				"dir": "West",
+				"degrees": 279
+			},
+			"avewind": {
+				"mph": 16,
+				"kph": 26,
+				"dir": "West",
+				"degrees": 279
+			},
+			"avehumidity": 50,
+			"maxhumidity": 61,
+			"minhumidity": 36
+		}]
+	},
+	"timestamp": 1388895290876
+}

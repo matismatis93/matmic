@@ -1,0 +1,28 @@
+{
+  "name": "weather-el",
+  "version": "0.0.0",
+  "dependencies": {
+    "polymer": "Polymer/polymer#master",
+    "polymer-jsonp": "Polymer/polymer-jsonp#master"
+  },
+  "homepage": "https://github.com/bradoyler/weather-el",
+  "authors": [
+    "Brad Oyler <bradoyler@gmail.com>"
+  ],
+  "description": "weather element",
+  "main": "index.html",
+  "keywords": [
+    "web-components",
+    "weather",
+    "component",
+    "polymer.js"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}

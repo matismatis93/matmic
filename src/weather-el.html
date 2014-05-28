@@ -1,0 +1,331 @@
+<polymer-element name="weather-el" attributes="autoupdate">
+  <template>
+    <style>
+      :host {
+      	
+      }
+
+      @font-face {
+        font-family: 'MeteoconsRegular';
+        src: url('Font-face/meteocons-webfont.eot');
+        src: url('Font-face/meteocons-webfont.eot?#iefix') format('embedded-opentype'),
+             url('Font-face/meteocons-webfont.woff') format('woff'),
+             url('Font-face/meteocons-webfont.ttf') format('truetype'),
+             url('Font-face/meteocons-webfont.svg#MeteoconsRegular') format('svg');
+        font-weight: normal;
+        font-style: normal;
+      }
+
+      .container {
+      	color: #555;
+		    text-transform: uppercase;
+      	font-family: "proxima_nova_rgregular","Helvetica Neue", Helvetica,Arial,sans-serif;
+        font-size: 1.5rem;
+        padding:9px; 
+        padding-bottom: 0px;
+     }
+      
+      .theme-sunny{
+        background-color: #f2b83e; color: #fff;
+      }
+
+      .theme-clear{
+        background-color: #91B9DD; color: #fff;
+      }
+
+      .time{
+        width: 155px;
+      	margin-top: 0;
+        margin-left: auto;
+        margin-right: auto;
+    		margin-bottom: 0.3rem;
+    		font-size: 0.85rem;
+    		line-height: 1.25rem;
+      }
+
+      h1, h2, h3, h4, h5, h6 {
+        font-family: "proxima_nova_ltsemibold","Helvetica Neue",Helvetica,Arial,sans-serif;
+		    font-weight: normal;
+      }
+      .location {
+        font-size: x-large;
+      }
+      .temperature, .weather {
+        font-size: large;
+      }
+      .current-weathericon {
+        float: left;
+        margin-right: 10px;
+        padding-bottom: 10px;
+      }
+      .forecast {
+        clear: both;
+        margin-top: 10px;
+      }
+      .forecast-day {
+        display: inline-block;
+        padding: 5px;
+        text-align: center;
+      }
+      .forecast-day div {
+        font-size: small;
+      }
+      .current-weathericon:before {
+        font-family: 'MeteoconsRegular';
+        font-size: 4.8rem;
+        content: attr(data-icon);
+      }
+      a:visited {
+        color: #4D4D4D;
+      }
+      a {
+        text-decoration: none;
+        color: #4D4D4D;
+      }
+      .weather-source {
+        padding-top: 9px;
+        font-size: 0.625rem;
+        line-height: 1rem;
+        opacity: 0.6;
+        width: 112px;
+        margin-top: 30px;
+        margin-left: auto;
+        margin-right: auto;
+        margin-bottom: 0px;
+      }
+
+    </style>
+    <div class="container {{current.theme.name}}">
+    	<div class="time"> {{current.localdatetime}} </div>
+    <h1 class="location">
+      {{current.display_location.full}}
+    </h1>
+      <span class="current-weathericon" data-icon="{{current.theme.icon}}"></span>
+      <div class="weather">{{current.weather}}</div>
+      <div class="temperature">{{current.temperature_string}}</div>
+      <div class="weather-source"> <a href="{{current.forecast_url}}">extended forecast</a> </div>
+      <polymer-jsonp id="jsonp_current" handleAs="json" response="{{currentConditionsResponse}}"></polymer-jsonp>  
+     </div>
+  </template>
+
+  <script>
+    Polymer('weather-el', {
+      currentConditionsResponse: null,
+      defaultResponse: {'icon':'sunny','weather':'Sunny','temperature_string':'NA F', 'forecast_url':'http://www.wunderground.com/US/NJ/Kingston.html', 'display_location':{'full':'location na'}},
+      updateInterval: 60000,
+      apikey: '7fa854c6a8aeba73',
+      position: {
+        coords: {
+          latitude: 40.421013,
+          longitude: -74.565346
+        }
+      },
+      enteredView: function() {
+        console.log('weather-el.enteredView()', this);
+        this.loadFromStorage();
+        this.canAutoUpdate = true;
+        this.autoupdateChanged();
+      },
+      leftView: function() {
+        this.canAutoUpdate = false;
+        this.autoupdateChanged();
+      },
+      loadFromStorage: function() {
+        var data = localStorage.getItem('wu-weather-data');
+        var cached = data && JSON.parse(data);
+        // Discard stored data if it's too old.
+        if (!cached ||
+            (new Date() - cached.timestamp) > (60 * 60 * 1000)) {
+           this.positionChanged();
+           this.updatePosition();
+          return;
+        }
+        this.current = cached.current;
+      },
+      saveToStorage: function() {
+        	this.current.localdatetime=dateFormat(new Date(), "ddd, mmm dd h:MM TT");
+          this.current.theme= this.getTheme(this.current.icon);
+          var data = {
+            current: this.current,
+            timestamp: new Date().getTime()
+          };
+          console.log('## localStorage set', data);
+          localStorage.setItem('wu-weather-data', JSON.stringify(data));
+      },
+
+      getTheme: function(icon) {
+        
+        var theme = {"name":"theme-"+icon, "icon":"m"};
+        if(icon === "sunny"){
+           theme.icon = "b"; theme.name = "theme-sunny";
+        }
+        else if(icon === "mostly sunny"){
+          theme.icon = "a"; theme.name = "theme-sunny";
+        }
+        else if(icon.indexOf("cloudy")> -1){
+          theme.icon = "y"; theme.name = "theme-cloudy";
+        }
+        else if(icon.indexOf("rain")> -1){
+          theme.icon = "r"; theme.name = "theme-rain";
+        }
+        else if(icon.indexOf("thunderstorm")> -1){
+          theme.icon = "p"; theme.name="theme-storms";
+        }
+        else if(icon.indexOf("hail")> -1){
+          theme.icon = "x"; theme.name="theme-hail";
+        }
+        else if(icon.indexOf("sleet")> -1){
+          theme.icon = "x"; theme.name="theme-hail";
+        }
+        else if(icon === "clear" || icon === "mostly clear"){
+          theme.icon = "c"; theme.name = "theme-clear";
+        }
+        else if(icon === "fair"){
+          theme.icon = "e"; theme.name = "theme-fair";
+        }
+        else if(icon.indexOf("snow")> -1){
+          theme.icon = "u"; theme.name = "theme-snow";
+        }
+        else if(icon.indexOf("wintry")> -1){
+          theme.icon = "w"; theme.name = "theme-snow";
+        }
+        else if(icon.indexOf("fog")> -1){
+          theme.icon = "l"; theme.name = "theme-fog";
+        }
+        else if(icon.indexOf("haze")> -1){
+          theme.icon = "m"; theme.name = "theme-haze";
+        }
+        return theme; 
+      },
+      autoupdateChanged: function() {
+        if (this.autoupdate && this.canAutoUpdate) {
+          if (!this.intervalId) {
+            this.intervalId = setInterval(this.updatePosition.bind(this),
+                this.updateInterval);
+          }
+        } else {
+          clearInterval(this.intervalId);
+          this.intervalId = null;
+        }
+      },
+      positionChanged: function() {
+        if (!this.$.jsonp_current.isInFlight()) {
+          this.$.jsonp_current.url = 'https://api.wunderground.com/api/' +
+              this.apikey + '/conditions/q/' +
+              this.position.coords.latitude + ',' +
+              this.position.coords.longitude + '.json?callback=';
+          this.$.jsonp_current.go();
+        }
+      },
+      currentConditionsResponseChanged: function() {
+        this.current = this.currentConditionsResponse.current_observation || this.defaultResponse;
+        this.saveToStorage();
+      },
+      updatePosition: function() {
+        // Get the current location.
+        navigator.geolocation.getCurrentPosition(
+            this.getCurrentPositionSuccess.bind(this),
+            this.getCurrentPositionError.bind(this), {timeout: 4000});
+      },
+      getCurrentPositionSuccess: function(position) {
+        this.position = position;
+      },
+      getCurrentPositionError: function(error) {
+        console.log('PositionError', error);
+      }
+    });
+
+	var dateFormat = function () {
+		var	token = /d{1,4}|m{1,4}|yy(?:yy)?|([HhMsTt])\1?|[LloSZ]|"[^"]*"|'[^']*'/g,
+			timezone = /\b(?:[PMCEA][SDP]T|(?:Pacific|Mountain|Central|Eastern|Atlantic) (?:Standard|Daylight|Prevailing) Time|(?:GMT|UTC)(?:[-+]\d{4})?)\b/g,
+			timezoneClip = /[^-+\dA-Z]/g,
+			pad = function (val, len) {
+				val = String(val);
+				len = len || 2;
+				while (val.length < len) val = "0" + val;
+				return val;
+			};
+
+		// Regexes and supporting functions are cached through closure
+		return function (date, mask, utc) {
+			var dF = dateFormat;
+
+			// You can't provide utc if you skip other args (use the "UTC:" mask prefix)
+			if (arguments.length == 1 && Object.prototype.toString.call(date) == "[object String]" && !/\d/.test(date)) {
+				mask = date;
+				date = undefined;
+			}
+
+			// Passing date through Date applies Date.parse, if necessary
+			date = date ? new Date(date) : new Date;
+			if (isNaN(date)) throw SyntaxError("invalid date");
+
+			mask = String(dF.masks[mask] || mask || dF.masks["default"]);
+
+			// Allow setting the utc argument via the mask
+			if (mask.slice(0, 4) == "UTC:") {
+				mask = mask.slice(4);
+				utc = true;
+			}
+
+			var	_ = utc ? "getUTC" : "get",
+				d = date[_ + "Date"](),
+				D = date[_ + "Day"](),
+				m = date[_ + "Month"](),
+				y = date[_ + "FullYear"](),
+				H = date[_ + "Hours"](),
+				M = date[_ + "Minutes"](),
+				s = date[_ + "Seconds"](),
+				L = date[_ + "Milliseconds"](),
+				o = utc ? 0 : date.getTimezoneOffset(),
+				flags = {
+					d:    d,
+					dd:   pad(d),
+					ddd:  dF.i18n.dayNames[D],
+					dddd: dF.i18n.dayNames[D + 7],
+					m:    m + 1,
+					mm:   pad(m + 1),
+					mmm:  dF.i18n.monthNames[m],
+					mmmm: dF.i18n.monthNames[m + 12],
+					yy:   String(y).slice(2),
+					yyyy: y,
+					h:    H % 12 || 12,
+					hh:   pad(H % 12 || 12),
+					H:    H,
+					HH:   pad(H),
+					M:    M,
+					MM:   pad(M),
+					s:    s,
+					ss:   pad(s),
+					l:    pad(L, 3),
+					L:    pad(L > 99 ? Math.round(L / 10) : L),
+					t:    H < 12 ? "a"  : "p",
+					tt:   H < 12 ? "am" : "pm",
+					T:    H < 12 ? "A"  : "P",
+					TT:   H < 12 ? "AM" : "PM",
+					Z:    utc ? "UTC" : (String(date).match(timezone) || [""]).pop().replace(timezoneClip, ""),
+					o:    (o > 0 ? "-" : "+") + pad(Math.floor(Math.abs(o) / 60) * 100 + Math.abs(o) % 60, 4),
+					S:    ["th", "st", "nd", "rd"][d % 10 > 3 ? 0 : (d % 100 - d % 10 != 10) * d % 10]
+				};
+
+			return mask.replace(token, function ($0) {
+				return $0 in flags ? flags[$0] : $0.slice(1, $0.length - 1);
+			});
+		};
+	}();
+
+	// Some common format strings
+	dateFormat.masks = {"default": "ddd mmm dd yyyy HH:MM:ss"};
+
+	// Internationalization strings
+	dateFormat.i18n = {
+		dayNames: [
+			"Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"
+		],
+		monthNames: [
+			"Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec",
+			"January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"
+		]
+	};
+  </script>
+</polymer-element>
