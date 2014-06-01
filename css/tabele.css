@@ -1,0 +1,22 @@
+table {
+  font-size: 14px;
+  font-family: 'Pontano Sans', sans-serif;
+  text-align: center;
+  border-spacing: 5px;
+  }
+  #tabela {
+  margin: 20px;
+  border: 1px solid black;  
+  border-collapse: collapse;
+  }
+  #tabela td {
+  margin: 20px;
+  padding: 5px;
+  }
+
+  td.czarny {
+  border: 1px solid black;
+  }
+  td.bialy {
+  border: 1px solid transparent;
+  }
