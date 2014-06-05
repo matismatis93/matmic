@@ -6,6 +6,21 @@ window.onload = function () {
     attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
 }).addTo(map);
 
+    for (var i = 1; i < localStorage.length; i=i+2) {
+    console.log(localStorage.getItem(i)+" "+localStorage.getItem(i+1));
+    L.marker([localStorage.getItem(i),localStorage.getItem(i+1)]).bindPopup("Numer: " + (i+1)/2).addTo(map);
+    }
+
+    function onMapClick(e) {
+    localStorage.setItem(localStorage.length+1, e.latlng.lat);
+    localStorage.setItem(localStorage.length+1, e.latlng.lng);
+    console.log(localStorage.getItem(localStorage.length-1));
+    console.log(localStorage.getItem(localStorage.length));
+    location.reload();
+    }
+
+    map.on('click', onMapClick);
+
 
    L.marker([54.378882, 18.506628]).addTo(map).bindPopup("Tutaj mieszkam").openPopup();
 
