@@ -15,6 +15,7 @@ try{if (!window.CloudFlare) {var CloudFlare=[{verbose:0,p:1400807252,byc:0,owlid
 
 <link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet-0.7.2/leaflet.css" />
 <script src="http://cdn.leafletjs.com/leaflet-0.7.2/leaflet.js"></script>
+<script src="mapa.js"></script>
 
 <style type="text/css">
   #map { height: 540px;
@@ -45,7 +46,8 @@ try{if (!window.CloudFlare) {var CloudFlare=[{verbose:0,p:1400807252,byc:0,owlid
  
 <div class="row">
 <div class="large-12 columns">
-<div id="map" class="leaflet-container leaflet-fade-anim" tabindex="0" style="position: relative;"><div class="leaflet-map-pane" style="-webkit-transform: translate3d(-7px, 0px, 0px);"><div class="leaflet-tile-pane"><div class="leaflet-layer"><div class="leaflet-tile-container"></div><div class="leaflet-tile-container leaflet-zoom-animated"><img class="leaflet-tile leaflet-tile-loaded" src="./leaflet_files/20.png" style="height: 256px; width: 256px; left: 437px; top: -122px;"><img class="leaflet-tile leaflet-tile-loaded" src="./leaflet_files/21.png" style="height: 256px; width: 256px; left: 437px; top: 134px;"><img class="leaflet-tile leaflet-tile-loaded" src="./leaflet_files/20(1).png" style="height: 256px; width: 256px; left: 181px; top: -122px;"><img class="leaflet-tile leaflet-tile-loaded" src="./leaflet_files/20(2).png" style="height: 256px; width: 256px; left: 693px; top: -122px;"><img class="leaflet-tile leaflet-tile-loaded" src="./leaflet_files/21(1).png" style="height: 256px; width: 256px; left: 181px; top: 134px;"><img class="leaflet-tile leaflet-tile-loaded" src="./leaflet_files/21(2).png" style="height: 256px; width: 256px; left: 693px; top: 134px;"><img class="leaflet-tile leaflet-tile-loaded" src="./leaflet_files/20(3).png" style="height: 256px; width: 256px; left: -75px; top: -122px;"><img class="leaflet-tile leaflet-tile-loaded" src="./leaflet_files/20(4).png" style="height: 256px; width: 256px; left: 949px; top: -122px;"><img class="leaflet-tile leaflet-tile-loaded" src="./leaflet_files/21(3).png" style="height: 256px; width: 256px; left: -75px; top: 134px;"><img class="leaflet-tile leaflet-tile-loaded" src="./leaflet_files/21(4).png" style="height: 256px; width: 256px; left: 949px; top: 134px;"></div></div></div><div class="leaflet-objects-pane"><div class="leaflet-shadow-pane"><img src="./leaflet_files/marker-shadow.png" class="leaflet-marker-shadow leaflet-zoom-animated" style="margin-left: -12px; margin-top: -41px; width: 41px; height: 41px; -webkit-transform: translate3d(553px, 162px, 0px);"><img src="./leaflet_files/marker-shadow.png" class="leaflet-marker-shadow leaflet-zoom-animated" style="margin-left: -12px; margin-top: -41px; width: 41px; height: 41px; -webkit-transform: translate3d(568px, 74px, 0px);"></div><div class="leaflet-overlay-pane"></div><div class="leaflet-marker-pane"><img src="./leaflet_files/marker-icon.png" class="leaflet-marker-icon leaflet-zoom-animated leaflet-clickable" tabindex="0" style="margin-left: -12px; margin-top: -41px; width: 25px; height: 41px; -webkit-transform: translate3d(553px, 162px, 0px); z-index: 162;"><img src="./leaflet_files/marker-icon.png" class="leaflet-marker-icon leaflet-zoom-animated leaflet-clickable" tabindex="0" style="margin-left: -12px; margin-top: -41px; width: 25px; height: 41px; -webkit-transform: translate3d(568px, 74px, 0px); z-index: 74;"></div><div class="leaflet-popup-pane"></div></div></div><div class="leaflet-control-container"><div class="leaflet-top leaflet-left"><div class="leaflet-control-zoom leaflet-bar leaflet-control"><a class="leaflet-control-zoom-in" href="http://kolszer.github.io/leaflet/#" title="Zoom in">+</a><a class="leaflet-control-zoom-out" href="http://kolszer.github.io/leaflet/#" title="Zoom out">-</a></div></div><div class="leaflet-top leaflet-right"></div><div class="leaflet-bottom leaflet-left"></div><div class="leaflet-bottom leaflet-right"><div class="leaflet-control-attribution leaflet-control"><a href="http://leafletjs.com/" title="A JS library for interactive maps">Leaflet</a></div></div></div></div>
+<h3>Mapka i trasa autobusu 110</h3>
+  <div id="map"></div>
 </div>
 </div>
  
@@ -69,25 +71,5 @@ try{if (!window.CloudFlare) {var CloudFlare=[{verbose:0,p:1400807252,byc:0,owlid
       var doc = document.documentElement;
       doc.setAttribute('data-useragent', navigator.userAgent);
     </script>
-    
-<script type="text/javascript">
- var map = L.map('map').setView([54.396, 18.57], 16);
-L.tileLayer('https://{s}.tiles.mapbox.com/v3/{id}/{z}/{x}/{y}.png', { maxZoom: 18, id: 'examples.map-i86knfo3'}).addTo(map);
-
-   for (var i = 1; i < localStorage.length; i=i+2) {
-    console.log(localStorage.getItem(i)+" "+localStorage.getItem(i+1));
-    L.marker([localStorage.getItem(i),localStorage.getItem(i+1)]).bindPopup("Numer: " + (i+1)/2).addTo(map);
-}
-
-function onMapClick(e) {
-    localStorage.setItem(localStorage.length+1, e.latlng.lat);
-    localStorage.setItem(localStorage.length+1, e.latlng.lng);
-    console.log(localStorage.getItem(localStorage.length-1));
-    console.log(localStorage.getItem(localStorage.length));
-    location.reload();
-}
-
-map.on('click', onMapClick);
-</script>
 </body>
 </html>
